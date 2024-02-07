@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.college.converter.databinding.ActivityMainBinding;
+
 /*
     TODOs:
     In groups of 4, complete the following tasks, 1 for each team member:
@@ -26,14 +28,19 @@ import android.widget.TextView;
 */
 
 public class MainActivity extends AppCompatActivity {
+
     static private final Float CONVERSION_RATE = 0.80F;
+    private ActivityMainBinding variableBinding;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         Log.i(TAG, "Entering onCreate()");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(variableBinding.getRoot());
 
-        Button buttonConvert = findViewById(R.id.convertButton);
+        Button buttonConvert = variableBinding.convertButton;
 
         buttonConvert.setOnClickListener( view ->  {
             convertCurrency(view);
@@ -42,19 +49,18 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "Exiting onCreate()");
     }
 
-    public void convertCurrency(View view) {
+    public void convertCurrency(View view)
+    {
         Log.i(TAG, "Entering convertCurrency class");
-        EditText inputView = findViewById(R.id.entryId);
 
-        String inputAmount = inputView.getText().toString();
-
-        TextView resultView = findViewById(R.id.resultId);
+        EditText inputView = variableBinding.entryId;
+        String inputAmount = variableBinding.entryId.getText().toString();
+        TextView resultView = variableBinding.resultId;
 
         if (!inputAmount.isEmpty()) {
+
             Float inputAmountDecimal = Float.valueOf(inputAmount);
-
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
-
             resultView.setText( resultFloat + " Euros" );
         }
         Log.i(TAG, "Exiting convertCurrency class");
