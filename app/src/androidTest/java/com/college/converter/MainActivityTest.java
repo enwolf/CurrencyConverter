@@ -37,8 +37,8 @@ public class MainActivityTest {
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    /*@Test
-    public void mainActivityTest() {
+    @Test
+    public void testCurrencyConversion() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -47,7 +47,7 @@ public class MainActivityTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+            //Test created by Robin Phillis
 
             ViewInteraction appCompatEditText = onView(withId(R.id.entryId));
             appCompatEditText.perform(replaceText("2500"), closeSoftKeyboard());
@@ -56,9 +56,9 @@ public class MainActivityTest {
             materialButton.perform(click());
 
             ViewInteraction textView = onView(withId(R.id.resultId));
-            textView.check(matches(withText("2000.0")));
+            textView.check(matches(withText("2000.0 Euros")));
         }
-    */
+
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
